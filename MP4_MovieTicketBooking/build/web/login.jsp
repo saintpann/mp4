@@ -26,7 +26,16 @@
                 <label for="password">Password</label>
                 <input type="password" id="password" name="password" class="form-input" required>
             </div>
-
+            <%
+                String errorMessage = (String) request.getAttribute("errorMessage");
+                if(errorMessage != null && !errorMessage.isEmpty()) {
+            %>
+                <div style="color: red; text-align: center; margin-bottom: 15px;">
+                    <%= errorMessage %> <%-- scriplet 2 --%>
+                </div>
+            <%
+                }
+            %>
             <button type="submit" class="form-button">Sign In</button>
         </form>
 
