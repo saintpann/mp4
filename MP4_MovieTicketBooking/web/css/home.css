@@ -18,21 +18,15 @@
 }
 
 body {
-    font-family: 'Poppins', sans-serif; /* Keeping Poppins, it works well */
+    font-family: 'Poppins', sans-serif;
     background-color: var(--bg-dark);
-    color: var(--cream); /* Main text color is cream */
+    color: var(--cream);
     line-height: 1.6;
-    padding-top: 68px; /* Adjusted if header height changes */
+    padding-top: 68px; /* Adjusted for fixed header */
 }
-
-/* This reset is for the main site pages. We'll override it for the login page. */
-body.login-page-body {
-    padding-top: 0; /* Remove padding for the login page */
-}
-
 
 a {
-    color: var(--gold); /* Links in gold */
+    color: var(--gold);
     text-decoration: none;
 }
 
@@ -40,13 +34,16 @@ a:hover {
     text-decoration: underline;
 }
 
-/* --- Header --- */
+/* ===============================================
+   *** HEADER ***
+===============================================
+*/
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 15px 30px;
-    background-color: var(--primary-blue); /* Header background is the main dark blue */
+    background-color: var(--primary-blue);
     border-bottom: 1px solid var(--border-color);
     position: fixed;
     top: 0;
@@ -55,29 +52,10 @@ a:hover {
     z-index: 100;
 }
 
-.header-left {
-    display: flex; /* Makes logo and headstamp sit side-by-side */
-    align-items: center; /* Vertically aligns them */
-    gap: 15px; /* Adds space between them */
-    min-width: 0; /* Helps with overflow */
-}
-
 .header-left .logo-img {
-    height: 40px; /* Adjust height as needed */
+    height: 40px;
     width: auto;
     vertical-align: middle;
-    flex-shrink: 0; /* Prevents the logo from shrinking */
-}
-
-.headstamp {
-    font-size: 20px;
-    font-weight: 600;
-    color: var(--cream);
-    
-    /* *** CHANGED ***
-      Removed overflow prevention rules.
-      Text will now wrap to a new line if it's too long.
-    */
 }
 
 .header-right {
@@ -89,12 +67,12 @@ a:hover {
     font-size: 16px;
     font-weight: 600;
     margin-right: 15px;
-    color: var(--cream); /* Welcome text in cream */
+    color: var(--cream);
 }
 
 .header-right .login-btn {
-    background-color: var(--gold); /* Login button in gold */
-    color: var(--primary-blue); /* Text on button in dark blue */
+    background-color: var(--gold);
+    color: var(--primary-blue);
     padding: 8px 20px;
     border-radius: 5px;
     font-weight: 600;
@@ -102,20 +80,23 @@ a:hover {
 }
 
 .header-right .login-btn:hover {
-    background-color: #e5c100; /* Slightly darker gold */
+    background-color: #e5c100;
     text-decoration: none;
 }
 
 .header-right .account-icon {
     font-size: 24px;
-    color: var(--cream); /* Account icon in cream */
+    color: var(--cream);
     cursor: pointer;
     margin-left: 15px;
 }
 
-/* --- Hero Section (The Mouse) --- */
+/* ===============================================
+   *** HERO SECTION ***
+===============================================
+*/
 .hero-section {
-    background-color: var(--bg-dark); /* Dark background */
+    background-color: var(--bg-dark);
     text-align: center;
     padding: 80px 20px;
     display: flex;
@@ -125,7 +106,7 @@ a:hover {
 }
 
 .hero-section .hero-logo-large {
-    width: 250px; /* Larger logo for hero section */
+    width: 250px;
     height: auto;
     margin-bottom: 30px;
 }
@@ -137,9 +118,13 @@ a:hover {
     margin-bottom: 50px;
 }
 
-/* --- Movie Listings Section --- */
+/* ===============================================
+   *** MOVIE LISTINGS (GRID) ***
+===============================================
+*/
 .movie-listings {
-    padding: 40px 30px;
+    /* Reduced side padding to 10px so cards go closer to the edge */
+    padding: 40px 10px;
 }
 
 .listing-header {
@@ -147,6 +132,7 @@ a:hover {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 30px;
+    padding: 0 20px; /* Keep header text aligned nicely */
     flex-wrap: wrap;
 }
 
@@ -177,11 +163,11 @@ a:hover {
     left: 0;
     width: 100%;
     height: 3px;
-    background-color: var(--gold); /* Tab active indicator in gold */
+    background-color: var(--gold);
 }
 
 .view-all {
-    color: var(--gold); /* View all link in gold */
+    color: var(--gold);
     font-weight: 600;
     display: flex;
     align-items: center;
@@ -192,14 +178,21 @@ a:hover {
     font-size: 14px;
 }
 
+/* --- THE GRID MAGIC --- */
 .movie-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 30px;
+    
+    /* 1. auto-fit: Stretches cards to fill the row (no empty space on right).
+       2. minmax(350px, 1fr): Cards are at least 350px wide, but grow if needed.
+    */
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    
+    gap: 20px;
+    width: 100%;
 }
 
 .movie-card {
-    background-color: var(--card-bg); /* Darker card background */
+    background-color: var(--card-bg);
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
@@ -212,7 +205,8 @@ a:hover {
 
 .movie-card img {
     width: 100%;
-    height: 300px;
+    /* Taller height for bigger cards */
+    height: 525px;
     object-fit: cover;
     display: block;
 }
@@ -222,7 +216,7 @@ a:hover {
 }
 
 .movie-info .title {
-    font-size: 18px;
+    font-size: 20px; /* Slightly larger text */
     font-weight: 600;
     margin-bottom: 5px;
     color: var(--cream);
@@ -232,12 +226,12 @@ a:hover {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 14px;
+    font-size: 15px;
     color: var(--light-grey);
 }
 
 .movie-info .genre {
-    color: var(--secondary-blue); /* Genre text in lighter blue */
+    color: var(--secondary-blue);
     font-weight: 500;
 }
 
@@ -248,12 +242,15 @@ a:hover {
 }
 
 .movie-info .rating i {
-    color: var(--gold); /* Star ratings in gold */
+    color: var(--gold);
 }
 
-/* --- Footer --- */
+/* ===============================================
+   *** FOOTER & BUTTONS ***
+===============================================
+*/
 .footer {
-    background-color: var(--primary-blue); /* Footer in dark blue */
+    background-color: var(--primary-blue);
     padding: 20px 30px;
     text-align: right;
     border-top: 1px solid var(--border-color);
@@ -263,8 +260,8 @@ a:hover {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    background-color: var(--gold); /* Cart button in gold */
-    color: var(--primary-blue); /* Icon in dark blue */
+    background-color: var(--gold);
+    color: var(--primary-blue);
     border: none;
     border-radius: 50%;
     width: 60px;
@@ -279,184 +276,40 @@ a:hover {
     z-index: 1000;
 }
 .shopping-cart-btn:hover {
-    background-color: #e5c100; /* Slightly darker gold */
-}
-
-/* --- Responsive adjustments --- */
-@media (max-width: 768px) {
-    body {
-        padding-top: 57px; 
-    }
-    body.login-page-body {
-        padding-top: 0;
-    }
-
-    .header {
-        padding: 10px 15px;
-    }
-    .header-left .logo-img {
-        height: 35px;
-    }
-    
-    .headstamp {
-        font-size: 16px; /* Makes text smaller */
-        gap: 10px; /* Reduces space */
-    }
-    
-    .header-right .login-btn {
-        padding: 6px 15px;
-        font-size: 14px;
-    }
-    .hero-section {
-        padding: 60px 15px;
-    }
-    .hero-section .hero-title {
-        font-size: 40px;
-    }
-    .hero-section .hero-logo-large {
-        width: 200px;
-    }
-    .movie-listings {
-        padding: 20px 15px;
-    }
-    .listing-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 15px;
-    }
-    .movie-grid {
-        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-        gap: 20px;
-    }
-    .movie-card img {
-        height: 250px;
-    }
-    .shopping-cart-btn {
-        width: 50px;
-        height: 50px;
-        font-size: 20px;
-    }
-}
-
-@media (max-width: 480px) {
-    .headstamp {
-        /* *** CHANGED ***
-          Text is no longer hidden. It will wrap if needed.
-          Made it smaller to fit better.
-        */
-        font-size: 14px;
-    }
-
-    .header-right .account-info {
-        display: none;
-    }
-    .header-right .account-icon {
-        margin-left: 0;
-    }
-    .hero-section .hero-title {
-        font-size: 30px;
-    }
-    .movie-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-
-/* ===============================================
-   *** STYLES FOR LOGIN PAGE ***
-===============================================
-*/
-
-.login-page-body {
-    background-color: var(--primary-blue); /* Login page has blue background */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-}
-
-.login-container {
-    background-color: var(--bg-dark);
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-    width: 100%;
-    max-width: 450px;
-}
-
-.login-header {
-    text-align: center;
-    margin-bottom: 30px;
-}
-
-.logo-img-login {
-    height: 60px; /* A bit larger for the login form */
-    width: auto;
-}
-
-.login-form h2 {
-    color: var(--cream);
-    font-size: 28px;
-    margin-bottom: 30px;
-    text-align: center;
-}
-
-.form-group {
-    margin-bottom: 20px;
-}
-
-.form-group label {
-    display: block;
-    color: var(--light-grey);
-    margin-bottom: 8px;
-    font-weight: 600;
-}
-
-.form-input {
-    width: 100%;
-    padding: 12px 15px;
-    background-color: var(--card-bg);
-    border: 1px solid var(--border-color);
-    border-radius: 5px;
-    color: var(--cream);
-    font-size: 16px;
-}
-
-.form-button {
-    width: 100%;
-    padding: 15px;
-    background-color: var(--gold);
-    color: var(--primary-blue);
-    border: none;
-    border-radius: 5px;
-    font-size: 18px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-top: 10px;
-}
-
-.form-button:hover {
     background-color: #e5c100;
 }
 
-.signup-link {
-    text-align: center;
-    margin-top: 25px;
-    color: var(--light-grey);
-}
+/* ===============================================
+   *** RESPONSIVE ***
+===============================================
+*/
+@media (max-width: 768px) {
+    body { padding-top: 57px; }
 
-.signup-link a {
-    font-weight: 600;
-}
-
-/* Responsive adjustments for login page */
-@media (max-width: 480px) {
-    .login-container {
-        padding: 20px;
-    }
+    .header { padding: 10px 15px; }
+    .header-left .logo-img { height: 35px; }
+    .header-right .login-btn { padding: 6px 15px; font-size: 14px; }
     
-    .login-form h2 {
-        font-size: 24px;
-    }
+    .hero-section { padding: 60px 15px; }
+    .hero-section .hero-title { font-size: 40px; }
+    .hero-section .hero-logo-large { width: 200px; }
+    
+    .movie-listings { padding: 20px 15px; }
+    .listing-header { flex-direction: column; align-items: flex-start; gap: 15px; }
+    
+    /* Make cards smaller on tablets so they fit side-by-side */
+    .movie-grid { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+    .movie-card img { height: 270px; }
+    
+    .shopping-cart-btn { width: 50px; height: 50px; font-size: 20px; }
+}
+
+@media (max-width: 480px) {
+    .header-right .account-info { display: none; }
+    .header-right .account-icon { margin-left: 0; }
+    
+    .hero-section .hero-title { font-size: 30px; }
+    
+    /* Single column on phones */
+    .movie-grid { grid-template-columns: 1fr; }
 }

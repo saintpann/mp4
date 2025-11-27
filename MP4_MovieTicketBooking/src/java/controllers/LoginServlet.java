@@ -15,12 +15,11 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException {  
         HttpSession session = request.getSession(false);
         
-        if(session != null && session.getAttribute("user")!=null){
-            response.sendRedirect("home");
-            return;
+        if(session != null){
+            session.invalidate();
         }
         request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
     }
