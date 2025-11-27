@@ -27,16 +27,12 @@ public class ContextListener implements ServletContextListener {
                     }
                 }
         });
-        time.start();
-        //context.setAttribute("header","ICS2608 / 2CSC / BUENAFE, Anton - ILANO, Dwayne Anthony - PANGAN, Marc Stephen");
-        //context.setAttribute("footer","MP4");
+        
+        context.setAttribute("header","ICS2608 / 2CSC / BUENAFE, Anton - ILANO, Dwayne Anthony - PANGAN, Marc Stephen");
+        context.setAttribute("footer","MP3");
 }
 
     @Override
     public void contextDestroyed(ServletContextEvent sce) {
-        running = false;
-        if (time != null) {
-            time.interrupt();
-        }
-}
+    }
 }

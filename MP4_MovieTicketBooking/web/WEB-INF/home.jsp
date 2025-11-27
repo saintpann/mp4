@@ -1,9 +1,10 @@
-<%-- 
-  IMPORTANT: You have already updated this to 'objects.User', which is correct
-  if that's your package name.
---%>
 <%@ page import="objects.User, javax.servlet.http.HttpSession" %>
-
+<%-- PREVENT BROWSER CACHING --%>
+<%
+    response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1
+    response.setHeader("Pragma", "no-cache"); // HTTP 1.0
+    response.setDateHeader("Expires", 0); // Proxies
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="css/home.css">
 </head>
 <body>
 
@@ -35,28 +36,30 @@
         <div class="header-left">
             <%-- Logo image for the header --%>
             <a href="home">
-                <img src="themouse.png" alt="The Mouse Logo" class="logo-img">
+                <img src="images/themouse.png" alt="The Mouse Logo" class="logo-img">
             </a>
             <div class="headstamp"><%= application.getAttribute("header") %> </div>
         </div>
         <div class="header-right">
             <% if (loggedInUser != null) { %>
-                
                 <span class="account-info">Welcome, <%= userName %></span>
-                <a href="#" class="account-icon"><i class="fas fa-user-circle"></i></a>
-                
+                <a href="profile" class="account-icon" title="Edit Profile">
+                    <i class="fas fa-user-circle"></i>
+                </a>
+        
+                <a href="logout" class="account-icon" title="Sign Out" style="margin-left: 15px; color: #ff6b6b;">
+                    <i class="fas fa-sign-out-alt"></i>
+                </a>
             <% } else { %>
-                
                 <a href="login" class="login-btn">Login</a>
-                
             <% } %>
-        </div>
+</div>
     </header>
 
     
     <section class="hero-section">
         <%-- Larger logo image for the hero section --%>
-        <img src="themouse.png" alt="The Mouse Logo" class="hero-logo-large">
+        <img src="images/themouse.png" alt="The Mouse Logo" class="hero-logo-large">
         <h1 class="hero-title">Your Ultimate Movie Experience</h1> <%-- Changed hero title for a generic welcome --%>
     </section>
 
@@ -65,7 +68,6 @@
         <div class="listing-header">
             <div class="listing-tabs">
                 <button class="active">Now Showing</button>
-                <button>Coming Soon</button>
             </div>
             <a href="#" class="view-all">
                 View All <i class="fas fa-chevron-right"></i>
@@ -73,78 +75,57 @@
         </div>
 
         <div class="movie-grid">
-            
+            <a class='movieclick' href="avengers">
             <div class="movie-card">
-                <img src="<%= request.getContextPath() %>/images/movie1.png" alt="Shadow Strike">
+                <img src="<%= request.getContextPath() %>/images/movie1.jpg" alt="Shadow Strike">
                 <div class="movie-info">
-                    <div class="title">Shadow Strike</div>
+                    <div class="title">Avengers: Endgame</div>
                     <div class="details">
                         <span class="genre">Action</span>
                         <span class="rating"><i class="fas fa-star"></i> 8.5</span>
                     </div>
                 </div>
             </div>
-
+            </a>
             
+            <a class='movieclick' href="beautifulboy">
             <div class="movie-card">
-                <img src="<%= request.getContextPath() %>/images/movie2.png" alt="Dark Secrets">
+                <img src="<%= request.getContextPath() %>/images/movie2.jpg" alt="Dark Secrets">
                 <div class="movie-info">
-                    <div class="title">Dark Secrets</div>
+                    <div class="title">Beautiful Boy</div>
                     <div class="details">
-                        <span class="genre">Thriller</span>
+                        <span class="genre">Drama</span>
                         <span class="rating"><i class="fas fa-star"></i> 7.8</span>
                     </div>
                 </div>
             </div>
-
+            </a>
             
+            <a class='movieclick' href="wicked">
             <div class="movie-card">
-                <img src="<%= request.getContextPath() %>/images/movie3.png" alt="Beyond the Horizon">
+                <img src="<%= request.getContextPath() %>/images/movie3.jpg" alt="Beyond the Horizon">
                 <div class="movie-info">
-                    <div class="title">Beyond the Horizon</div>
+                    <div class="title">Wicked</div>
                     <div class="details">
-                        <span class="genre">Adventure</span>
+                        <span class="genre">Fantasy</span>
                         <span class="rating"><i class="fas fa-star"></i> 8.2</span>
                     </div>
                 </div>
             </div>
-
+            </a>
             
+            <a class='movieclick' href="lalaland">
             <div class="movie-card">
-                <img src="<%= request.getContextPath() %>/images/movie4.png" alt="Cosmic Voyage">
+                <img src="<%= request.getContextPath() %>/images/movie4.jpg" alt="Cosmic Voyage">
                 <div class="movie-info">
-                    <div class="title">Cosmic Voyage</div>
+                    <div class="title">La La Land</div>
                     <div class="details">
-                        <span class="genre">Sci-Fi</span>
+                        <span class="genre">Drama</span>
                         <span class="rating"><i class="fas fa-star"></i> 9.1</span>
                     </div>
                 </div>
             </div>
-
-            
-            <div class="movie-card">
-                <img src="<%= request.getContextPath() %>/images/movie5.png" alt="The Last Chapter">
-                <div class="movie-info">
-                    <div class="title">The Last Chapter</div>
-                    <div class="details">
-                        <span class="genre">Drama</span>
-                        <span class="rating"><i class="fas fa-star"></i> 8.7</span>
-                    </div>
-                </div>
-            </div>
-
-            
-            <div class="movie-card">
-                <img src="<%= request.getContextPath() %>/images/movie6.png" alt="Midnight Terror">
-                <div class="movie-info">
-                    <div class="title">Midnight Terror</div>
-                    <div classD="details">
-                        <span class="genre">Horror</span>
-                        <span class="rating"><i class="fas fa-star"></i> 7.5</span>
-                    </div>
-                </div>
-            </div>
-            
+            </a>
         </div>
     </section>
 
