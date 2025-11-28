@@ -69,13 +69,10 @@
             <div class="listing-tabs">
                 <button class="active">Now Showing</button>
             </div>
-            <a href="#" class="view-all">
-                View All <i class="fas fa-chevron-right"></i>
-            </a>
         </div>
 
         <div class="movie-grid">
-            <a class='movieclick' href="avengers">
+            <a class='movieclick' href="avengers.jsp">
             <div class="movie-card">
                 <img src="<%= request.getContextPath() %>/images/movie1.jpg" alt="Shadow Strike">
                 <div class="movie-info">
@@ -88,7 +85,7 @@
             </div>
             </a>
             
-            <a class='movieclick' href="beautifulboy">
+            <a class='movieclick' href="beautifulboy.jsp">
             <div class="movie-card">
                 <img src="<%= request.getContextPath() %>/images/movie2.jpg" alt="Dark Secrets">
                 <div class="movie-info">
@@ -101,7 +98,7 @@
             </div>
             </a>
             
-            <a class='movieclick' href="wicked">
+            <a class='movieclick' href="wicked.jsp">
             <div class="movie-card">
                 <img src="<%= request.getContextPath() %>/images/movie3.jpg" alt="Beyond the Horizon">
                 <div class="movie-info">
@@ -114,7 +111,7 @@
             </div>
             </a>
             
-            <a class='movieclick' href="lalaland">
+            <a class='movieclick' href="lalaland.jsp">
             <div class="movie-card">
                 <img src="<%= request.getContextPath() %>/images/movie4.jpg" alt="Cosmic Voyage">
                 <div class="movie-info">
