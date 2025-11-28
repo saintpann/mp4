@@ -1,2 +1,1 @@
-admin,1234,Administrator,30,09123456789,Admin Headquarters,Stafftest,1111,av sjlk,91,234567,asvn, dc,Customer
-ad,0000,ad,10,0000000000,fdxcgfvhgjbhknlkm,Customer
+admin,1234,Administrator,30,09123456789,Admin Headquarters,Staff
